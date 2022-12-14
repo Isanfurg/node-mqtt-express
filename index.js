@@ -32,7 +32,7 @@ client.on('connect', ()=> {
 client.on('message', (topic, message, packet) => { 
   console.log(packet, packet.payload.toString()); 
   if(topic === topicName) { 
-   console.log(packet.payload.toString()); 
+
    io.emit("weight", packet.payload.toString())
   } 
 }) 
@@ -46,3 +46,4 @@ client.on("reconnect", function() {
 client.on("offline", function() { 
     console.log("Client is currently offline") 
 })  
+server.listen(3000);
