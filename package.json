@@ -1,0 +1,25 @@
+{
+  "name": "mqtt-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isanfurg/node-mqtt-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isanfurg/node-mqtt-express/issues"
+  },
+  "homepage": "https://github.com/Isanfurg/node-mqtt-express#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mqtt": "^4.3.7",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4"
+  }
+}
