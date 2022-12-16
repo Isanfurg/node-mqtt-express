@@ -32,12 +32,15 @@ var count = 3000
 const client = mqtt.connect("mqtt://"+url,props) 
 client.on('connect', ()=> { 
     // can also accept objects in the form {'topic': qos} 
-  client.subscribe(topicName, (err, granted) => { 
-      if(err) { 
-          console.log(err, 'err'); 
-      } 
-      console.log(granted, 'granted') 
-  }) 
+  client.subscribe(topicWeight)
+  client.subscribe(topicTemp)
+  client.subscribe(topicOut)
+  client.subscribe(topicIn)
+  client.subscribe(topicGPS)
+  client.subscribe(topicVibration)
+  client.subscribe(topicSound) 
+  client.subscribe(topicHumidity)
+
 }) 
 
 
