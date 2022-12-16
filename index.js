@@ -78,7 +78,7 @@ client.on('message', (topic, message, packet) => {
     case topicVibration:
         var val = packet.payload.toString()
         io.emit("vibration",{
-           vibration: parseFloat(val)
+           value: parseFloat(val)
         })
         break
     case topicTemp:
