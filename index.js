@@ -20,14 +20,14 @@ username: "beesiot2022",
 password: "beesiot2022"
 }
 const topicWeight = '/bees/weight' 
-const topicTemp = '/bees/weight' 
-const topicOut = '/bees/weight' 
-const topicIn = '/bees/weight' 
-const topicGPS = '/bees/weight' 
-const topicHumidity = '/bees/weight' 
-const topicSound = '/bees/weight' 
-const topicVibration = '/bees/weight' 
-
+const topicTemp = '/bees/temp' 
+const topicOut = '/bees/out' 
+const topicIn = '/bees/in' 
+const topicGPS = '/bees/gps' 
+const topicHumidity = '/bees/humidity' 
+const topicSound = '/bees/sound' 
+const topicVibration = '/bees/vibration' 
+var count = 3000
 
 const client = mqtt.connect("mqtt://"+url,props) 
 client.on('connect', ()=> { 
@@ -49,25 +49,25 @@ client.on('message', (topic, message, packet) => {
     case topicWeight:
         var val = packet.payload.toString()
         io.emit("weight",{
-            weight: parseFloat(val)
+            value: parseFloat(val)
         })
         break;
     case topicHumidity:
         var val = packet.payload.toString()
         io.emit("humidity",{
-            humidity: parseFloat(val)
+            value: parseFloat(val)
         })
         break
     case topicSound:
         var val = packet.payload.toString()
         io.emit("sound",{
-            sound: parseFloat(val)
+            value: parseFloat(val)
         })
         break
     case topicGPS:
         var val = packet.payload.toString()
         val = val.split(",")
-        io.emit("sound",{
+        io.emit("location",{
             longitude: parseFloat(val[0]),
             latitude: parseFloat(val[1])
         })
@@ -81,19 +81,18 @@ client.on('message', (topic, message, packet) => {
     case topicTemp:
         var val = packet.payload.toString()
         io.emit("temperature",{
-            temperature: parseFloat(val)
+            value: parseFloat(val)
         })
         break
     case topicIn:
-        var val = packet.payload.toString()
-        io.emit("addBee",{
-            //no se que enviar
+        io.emit("count",{
+            value: count++
         })
         break
     case topicOut:
-        var val = packet.payload.toString()
-        io.emit("removeBee",{
-            //no se que enviar
+        
+        io.emit("count",{
+            value: count--
         })
         break
     default:
